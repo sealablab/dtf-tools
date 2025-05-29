@@ -1,0 +1,12 @@
+# Core framework (editable install)
+-e git+https://github.com/sealablab/dtf-framework.git#egg=dtf-framework
+
+# Development tools
+ipython
+pytest
+pytest-cov
+black
+ruff
+
+# Optional: If you want to use a specific version
+# -e git+https://github.com/sealablab/dtf-framework.git@v0.1.0#egg=dtf-framework 
