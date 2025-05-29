@@ -13,7 +13,7 @@ This repository contains tools and scripts that are separate from the core frame
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourorg/dtf-tools.git
+git clone https://github.com/sealablab/dtf-tools.git
 cd dtf-tools
 
 # Start the development environment
