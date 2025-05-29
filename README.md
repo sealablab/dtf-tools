@@ -1,12 +1,12 @@
 # DTF Tools
 
-> [!note] Cross-Platform Note
-> This README is designed to render properly on GitHub, Bitbucket, and in Obsidian vaults.
-> When viewing in Obsidian, you may want to use the "Reading View" for best results.
-
-> [!important] Core Framework
-> This is a companion repository to the [DTF Framework](https://github.com/sealablab/dtf-framework) library.
+> **Note**: This is a companion repository to the [DTF Framework](https://github.com/sealablab/dtf-framework) library.
 > The framework provides the core data models and utilities, while this repository contains development tools.
+
+## Related Repositories
+
+- [DTF Framework](https://github.com/sealablab/dtf-framework) - Core data models and utilities
+- [DTF Development Environment](https://github.com/sealablab/dtf-dev) - Development environment setup
 
 ## Overview
 
@@ -44,7 +44,7 @@ python run-ipython.py
 
 ### Dependency Management
 
-> [!note] For Maintainers
+> **Note**: For Maintainers
 > This project uses `uv` for dependency management. Dependencies are managed through `pyproject.toml`.
 
 #### Quick Reference
