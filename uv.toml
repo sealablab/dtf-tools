@@ -1,0 +1,34 @@
+# DTF Tools - uv Configuration
+# This file configures uv's behavior for the DTF Tools project
+
+[uv]
+# Use system Python by default
+python = "system"
+
+# Cache settings
+cache-dir = ".uv-cache"
+no-cache = false
+
+# Dependency resolution settings
+resolution = "highest"  # Use highest compatible versions
+prerelease = false     # Don't use pre-release versions by default
+
+# Security settings
+audit = true          # Enable security audits
+audit-exit-code = 1   # Exit with error if vulnerabilities found
+
+# Build settings
+build-isolation = true
+no-binary = []        # Packages to build from source
+only-binary = []      # Packages to only use pre-built wheels
+
+# Network settings
+timeout = 60          # Network timeout in seconds
+retries = 3           # Number of retries for failed downloads
+index-url = "https://pypi.org/simple"  # Default package index
+
+# Development settings
+[uv.dev]
+# Development-specific settings
+resolution = "lowest"  # Use lowest compatible versions for dev
+prerelease = true     # Allow pre-release versions in dev 

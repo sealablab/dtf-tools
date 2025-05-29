@@ -17,7 +17,7 @@ git clone https://github.com/sealablab/dtf-tools.git
 cd dtf-tools
 
 # Start the development environment
-./DTF-Ipython.sh
+./dtf-ipython.sh
 ```
 
 ## Available Tools
@@ -31,15 +31,82 @@ A development environment script that:
 
 Usage:
 ```bash
-./DTF-Ipython.sh
+./dtf-ipython.sh
 ```
+
+### Dependency Management
+
+> [!note] For Maintainers
+> This project uses `uv` for dependency management. We provide custom scripts and configuration
+> to make dependency management easier and more consistent.
+
+#### Quick Reference
+
+```bash
+# Update dependencies and check security
+./scripts/manage-deps.sh all
+
+# Just update dependencies
+./scripts/manage-deps.sh update
+
+# Check for security issues
+./scripts/manage-deps.sh security
+
+# Show dependency tree
+./scripts/manage-deps.sh tree
+
+# Clean cache
+./scripts/manage-deps.sh clean
+```
+
+#### Configuration
+
+The `uv.toml` file configures how `uv` manages dependencies:
+- Uses highest compatible versions by default
+- Enables security audits
+- Configures caching and network settings
+- Has separate development settings
+
+#### Common Tasks
+
+1. **Adding a new dependency**:
+   ```bash
+   # 1. Add to requirements.txt
+   # 2. Run update to generate lock file
+   ./scripts/manage-deps.sh update
+   ```
+
+2. **Updating all dependencies**:
+   ```bash
+   ./scripts/manage-deps.sh update
+   ```
+
+3. **Checking for security issues**:
+   ```bash
+   ./scripts/manage-deps.sh security
+   ```
+
+4. **Troubleshooting**:
+   - If you see strange dependency issues, try:
+     ```bash
+     ./scripts/manage-deps.sh clean  # Clear cache
+     ./scripts/manage-deps.sh update # Reinstall everything
+     ```
+   - To see what's installed:
+     ```bash
+     ./scripts/manage-deps.sh tree
+     ```
 
 ## Project Structure
 
 ```
 dtf-tools/
-├── DTF-Ipython.sh          # Development environment script
+├── dtf-ipython.sh          # Development environment script
+├── scripts/                # Utility scripts
+│   └── manage-deps.sh      # Dependency management script
 ├── requirements.txt        # Development dependencies
+├── requirements.lock       # Locked dependencies (generated)
+├── uv.toml                # uv configuration
 └── .gitignore             # Git ignore rules
 ```
 
@@ -54,7 +121,7 @@ dtf-tools/
 ### Setup
 
 The tools are designed to work with the DTF Framework installed as a dependency.
-The `DTF-Ipython.sh` script will handle the setup automatically.
+The `dtf-ipython.sh` script will handle the setup automatically.
 
 ## Contributing
 
@@ -65,7 +132,7 @@ The `DTF-Ipython.sh` script will handle the setup automatically.
 
 ## License
 
-[Your chosen license]
+MIT
 
 ---
 
