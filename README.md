@@ -20,98 +20,58 @@ This repository contains tools and scripts that are separate from the core frame
 git clone https://github.com/sealablab/dtf-tools.git
 cd dtf-tools
 
+# Set up the development environment
+uv venv
+uv pip install -e ".[dev]"
+
 # Start the development environment
-./dtf-ipython.sh
+python run-ipython.py
 ```
 
 ## Available Tools
 
-### DTF-Ipython.sh
+### Development Environment
 
-A development environment script that:
-- Sets up a Python virtual environment
-- Installs the DTF Framework and dependencies
-- Launches IPython with autoreload enabled
+The development environment provides:
+- IPython with autoreload enabled
+- Pre-imported DTF Framework models
+- Proper Python path configuration
 
 Usage:
 ```bash
-./dtf-ipython.sh
+python run-ipython.py
 ```
 
 ### Dependency Management
 
 > [!note] For Maintainers
-> This project uses `uv` for dependency management. We provide custom scripts and configuration
-> to make dependency management easier and more consistent.
+> This project uses `uv` for dependency management. Dependencies are managed through `pyproject.toml`.
 
 #### Quick Reference
 
 ```bash
-# Update dependencies and check security
-./scripts/manage-deps.sh all
+# Create/update virtual environment
+uv venv
 
-# Just update dependencies
-./scripts/manage-deps.sh update
+# Install package with development dependencies
+uv pip install -e ".[dev]"
 
-# Check for security issues
-./scripts/manage-deps.sh security
+# Update dependencies
+uv pip sync pyproject.toml
 
 # Show dependency tree
-./scripts/manage-deps.sh tree
-
-# Clean cache
-./scripts/manage-deps.sh clean
+uv pip list --tree
 ```
-
-#### Configuration
-
-The `uv.toml` file configures how `uv` manages dependencies:
-- Uses highest compatible versions by default
-- Enables security audits
-- Configures caching and network settings
-- Has separate development settings
-
-#### Common Tasks
-
-1. **Adding a new dependency**:
-   ```bash
-   # 1. Add to requirements.txt
-   # 2. Run update to generate lock file
-   ./scripts/manage-deps.sh update
-   ```
-
-2. **Updating all dependencies**:
-   ```bash
-   ./scripts/manage-deps.sh update
-   ```
-
-3. **Checking for security issues**:
-   ```bash
-   ./scripts/manage-deps.sh security
-   ```
-
-4. **Troubleshooting**:
-   - If you see strange dependency issues, try:
-     ```bash
-     ./scripts/manage-deps.sh clean  # Clear cache
-     ./scripts/manage-deps.sh update # Reinstall everything
-     ```
-   - To see what's installed:
-     ```bash
-     ./scripts/manage-deps.sh tree
-     ```
 
 ## Project Structure
 
 ```
 dtf-tools/
-├── dtf-ipython.sh          # Development environment script
-├── scripts/                # Utility scripts
-│   └── manage-deps.sh      # Dependency management script
-├── requirements.txt        # Development dependencies
-├── requirements.lock       # Locked dependencies (generated)
-├── uv.toml                # uv configuration
-└── .gitignore             # Git ignore rules
+├── dtf_tools/           # Python package
+│   └── __init__.py     # Package initialization
+├── run-ipython.py      # Development environment launcher
+├── pyproject.toml      # Package configuration and dependencies
+└── .gitignore         # Git ignore rules
 ```
 
 ## Development
@@ -119,13 +79,26 @@ dtf-tools/
 ### Prerequisites
 
 - Python 3.8+
-- [uv](https://github.com/astral-sh/uv) (recommended) or pip
-- DTF Framework (installed automatically by scripts)
+- [uv](https://github.com/astral-sh/uv) package manager
+- DTF Framework (installed automatically as a dependency)
 
 ### Setup
 
-The tools are designed to work with the DTF Framework installed as a dependency.
-The `dtf-ipython.sh` script will handle the setup automatically.
+1. Ensure you have UV installed:
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   ```
+
+2. Create and activate the virtual environment:
+   ```bash
+   uv venv
+   source .venv/bin/activate  # or .venv/Scripts/activate on Windows
+   ```
+
+3. Install the package with development dependencies:
+   ```bash
+   uv pip install -e ".[dev]"
+   ```
 
 ## Contributing
 
